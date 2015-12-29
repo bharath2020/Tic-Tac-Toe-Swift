@@ -153,13 +153,13 @@ final class TTBoard {
         }
         
         
-        totalPiecesOnBoard = boardCount
     }
     
     
     func copy() -> TTBoard {
         let copy = TTBoard(boardIDString: self.boardID)
         copy.copyBoardFrom(board,emptySpotsCopy: emptySpots)
+        copy.totalPiecesOnBoard = self.totalPiecesOnBoard
         return copy
     }
     

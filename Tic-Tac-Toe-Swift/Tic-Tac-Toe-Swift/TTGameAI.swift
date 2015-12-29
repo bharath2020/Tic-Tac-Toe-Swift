@@ -19,9 +19,9 @@ final class TTGameAI  {
     
     
     func rand(from : Int , to : Int ) -> Int {
-        return from
+      //  return from
         
-      // return Int(arc4random_uniform( UInt32(to - from + 1 )))
+       return Int(arc4random_uniform( UInt32(to - from + 1 )))
     }
     
     init(hostPlayer player1: TTPlayer , opponent player2 : TTPlayer ){

@@ -22,7 +22,7 @@ final class TTGame  {
     private let _player1 : TTPlayer
     private let _player2 : TTPlayer
     var _currentPlayer : TTPlayer
-     let _currentBoard : TTBoard
+    let _currentBoard : TTBoard
     
     
     
@@ -38,14 +38,9 @@ final class TTGame  {
         
         _currentBoard = TTBoard(boardIDString: NSUUID().UUIDString)
         
-        
-        
-        
     }
     
     func startGame() -> Void {
-        
-        
         
         NSNotificationCenter.defaultCenter().postNotificationName(TTGameStartedNotificationKey, object: self);
         
@@ -57,7 +52,6 @@ final class TTGame  {
                 self._currentPlayer.yourTurn()
         })
       
-        
     }
     
     
