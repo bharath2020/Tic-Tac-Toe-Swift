@@ -20,13 +20,10 @@ let NOT_OCCUPIED = -1
 let  win:[Int] = [0,1,2,3,4,5,6,7,8,0,3,6,1,4,7,2,5,8,0,4,8,2,4,6];
 
 final class TTBoard {
-    
-    
     private var board : [Int] = []
     private var totalPiecesOnBoard = 0
     private var emptySpots : [Int] = []
     let boardID : String
-
     
     init(boardIDString : String) {
     
@@ -42,22 +39,16 @@ final class TTBoard {
     }
     
     final func markPosition(position : Int , playerCode  : Int ) -> BoardState {
-        
         assert(position < 9, "Position greater than 9 while marking position")
-        
         if board[position] != NOT_OCCUPIED {
-            
             return .InComplete
-            
         }
         
         board[position] = playerCode
         removePositionFromEmptySlot(position)
-        
         totalPiecesOnBoard++
-        
+
         let boardState:Int = winner()
-        
         if boardState != 0 {
             return .Win
         }
@@ -67,14 +58,10 @@ final class TTBoard {
         else{
             return .InComplete
         }
-        
-        
     }
     
     func getEmptySpotList() -> [Int] {
-        
        return Array<Int>(emptySpots)
-
     }
     
     func removePositionFromEmptySlot(position : Int ){
@@ -90,11 +77,9 @@ final class TTBoard {
     
     func resetPosition( position : Int ){
         assert(position<9, "Position greater than 9 while resetting")
-        
         board[position] = NOT_OCCUPIED
         addPositionToEmptySlot(position)
         totalPiecesOnBoard--
-        
     }
     
      func winner( ) -> Int {
@@ -102,21 +87,15 @@ final class TTBoard {
         //  3 4 5
         //  6 7 8
         
-        
         for index in 0...7 {
-            
             let baseIndex = index * 3
-            
             let valAt0 = board[win[baseIndex]]
-
-                
             if( valAt0 != NOT_OCCUPIED &&
                 valAt0 == board[win[baseIndex+1]]  &&
                 valAt0 == board[win[baseIndex+2]]){
                     return valAt0;
             }
         }
-        
         return 0;
     }
     
@@ -140,7 +119,6 @@ final class TTBoard {
     }
     
     func copyBoardFrom(otherBoard: [Int], emptySpotsCopy  : [Int]   ) -> Void{
-        
         let boardCount = otherBoard.count
         board.removeAll(keepCapacity: true)
         for position in 0...boardCount-1 {
@@ -151,10 +129,7 @@ final class TTBoard {
         for val in emptySpotsCopy{
             emptySpots.append(val)
         }
-        
-        
     }
-    
     
     func copy() -> TTBoard {
         let copy = TTBoard(boardIDString: self.boardID)
@@ -162,6 +137,4 @@ final class TTBoard {
         copy.totalPiecesOnBoard = self.totalPiecesOnBoard
         return copy
     }
-    
-   
 }
